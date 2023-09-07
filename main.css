@@ -158,3 +158,127 @@ p {
     font-size: 4vw;
     
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  touch-action: none;
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #111;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+#drag-container, #spin-container {
+  position: relative;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: rotateX(-10deg);
+  z-index: 100;
+}
+
+#drag-container img, #drag-container video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  line-height: normal;
+  font-size: 16px; /* Font size adjusted for mobile */
+  text-align: center;
+  box-shadow: 0 0 8px #fff;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#drag-container img:hover, #drag-container video:hover {
+  box-shadow: 0 0 15px #fffd;
+}
+
+#drag-container p {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  color: rgb(0, 195, 255);
+  animation: fadein ease 15s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#ground {
+  width: 100%;
+  padding-bottom: 100%; /* 1:1 aspect ratio for mobile */
+  background: radial-gradient(circle, #9993, transparent);
+}
+
+#music-container {
+  display: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes spinRevert {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+#canvas {
+  background-color: transparent;
+  color: transparent;
+  margin: 0;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  width: 100vw;
+}
+
+#canva {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+p {
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Rampart One', cursive;
+  font-size: 4vw;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  #drag-container img,
+  #drag-container video {
+    font-size: 8px; /* Adjust font size for smaller screens */
+  }
+}
